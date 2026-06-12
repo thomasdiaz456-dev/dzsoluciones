@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DZ Soluciones Integrales | Ingeniería, Mantenimiento y Tecnología</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        /* --- ARQUITECTURA DE DISEÑO CORPORATIVO (CSS ROBUSTO) --- */
+        :root {
+            --azul: #003f88;
+            --azul-oscuro: #002244;
+            --verde: #00a896;
+            --verde-hover: #008f80;
+            --gris-fondo: #f8f9fa;
+            --gris-texto: #555555;
+            --texto-principal: #333333;
+            --blanco: #ffffff;
+        }
+
+        /* Reset Completo y Suavizado */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--gris-fondo);
+            color: var(--texto-principal);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* --- HEADER Y NAVEGACIÓN PROFESIONAL --- */
+        header {
+            position: sticky;
+            top: 0;
+            background: var(--blanco);
+            z-index: 999;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border-bottom: 3px solid var(--azul);
+        }
+        nav {
+            max-width: 1200px;
+            margin: auto;
+            padding: 15px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+        .logo {
+            height: 65px;
+            width: auto;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+        .logo:hover {
+            transform: scale(1.03);
+        }
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--azul);
+            font-weight: 700;
+            margin-left: 25px;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            position: relative;
+            padding: 5px 0;
+            transition: color 0.3s ease;
+        }
+        .nav-links a:hover {
+            color: var(--verde);
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--verde);
+            transition: width 0.3s ease;
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* --- SECCIÓN HERO --- */
+        .hero {
+            background: linear-gradient(rgba(0, 34, 68, 0.82), rgba(0, 34, 68, 0.88)), url('banner.png') center/cover no-repeat;
+            padding: 160px 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 5px solid var(--verde);
+        }
+        .hero-logo-present {
+            height: 110px;
+            margin-bottom: 25px;
+            filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3));
+            object-fit: contain;
+        }
+        .hero h1 {
+            font-size: 4.2rem;
+            font-weight: 900;
+            background: linear-gradient(90deg, #ffffff, #00a896);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 4px 25px rgba(0, 0, 0, 0.35);
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+        .hero p {
+            color: var(--blanco);
+            font-size: 1.35rem;
+            max-width: 850px;
+            margin: 15px auto 0;
+            font-weight: 400;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+        }
+        .btn-banner {
+            background: linear-gradient(135deg, var(--verde), var(--verde-hover));
+            color: var(--blanco);
+            padding: 18px 45px;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 35px;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 20px rgba(0, 168, 150, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .btn-banner:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 168, 150, 0.6);
+        }
+
+        /* --- DISEÑO DE CONTENEDORES Y TÍTULOS --- */
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 90px 20px;
+        }
+        .section-title {
+            text-align: center;
+            color: var(--azul);
+            font-size: 2.6rem;
+            font-weight: 800;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 5px;
+            background: var(--verde);
+            margin: 15px auto 0;
+            border-radius: 50px;
+        }
+
+        /* --- SECCIÓN QUIÉNES SOMOS --- */
+        .about {
+            background: var(--blanco);
+            border-bottom: 1px solid #eee;
+        }
+        .about-wrapper {
+            max-width: 900px;
+            margin: auto;
+            text-align: center;
+        }
+        .about p {
+            font-size: 1.15rem;
+            color: var(--gris-texto);
+            margin-bottom: 20px;
+            line-height: 1.9;
+        }
+        .about p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* --- SECCIÓN TRABAJOS Y SERVICIOS --- */
+        .services {
+            background: var(--gris-fondo);
+        }
+        .grid-services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        .card-service {
+            background: var(--blanco);
+            border-top: 6px solid var(--verde);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+        .card-service:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+        .card-service img {
+            width: 100%;
+            height: 230px;
+            object-fit: cover;
+            border-bottom: 1px solid #eee;
+            transition: transform 0.5s ease;
+        }
+        .card-service:hover img {
+            transform: scale(1.03);
+        }
+        .card-service-body {
+            padding: 25px;
+            text-align: center;
+        }
+        .card-service-body h3 {
+            color: var(--azul);
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        /* --- SECCIÓN EXPERIENCIA --- */
+        .experience {
+            background: var(--blanco);
+            border-top: 1px solid #eee;
+        }
+        .intro-text {
+            text-align: center;
+            max-width: 950px;
+            margin: 0 auto 50px;
+            color: var(--gris-texto);
+            font-size: 1.1rem;
+            line-height: 1.9;
+        }
+        .grid-experience {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+            gap: 30px;
+        }
+        .card-experience {
+            background: var(--gris-fondo);
+            border-radius: 15px;
+            padding: 40px 30px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+            border-top: 5px solid var(--verde);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+        .card-experience:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.09);
+        }
+        .card-experience i {
+            font-size: 2.6rem;
+            color: var(--verde);
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+        .card-experience h3 {
+            color: var(--azul);
+            font-size: 1.35rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        .card-experience p {
+            color: var(--gris-texto);
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        /* --- CAJA DE PRIVACIDAD / REFERENCIAS --- */
+        .references-box {
+            background: linear-gradient(135deg, var(--azul), var(--azul-oscuro));
+            color: var(--blanco);
+            border-radius: 20px;
+            padding: 55px 40px;
+            text-align: center;
+            margin-top: 70px;
+            box-shadow: 0 12px 40px rgba(0, 34, 68, 0.25);
+            position: relative;
+            overflow: hidden;
+        }
+        .references-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: url('logo.png') no-repeat center;
+            background-size: contain;
+            opacity: 0.03;
+            pointer-events: none;
+        }
+        .references-box i {
+            font-size: 3.5rem;
+            color: var(--verde);
+            margin-bottom: 20px;
+        }
+        .references-box h3 {
+            margin-bottom: 15px;
+            font-size: 2.1rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        .references-box p {
+            max-width: 850px;
+            margin: auto;
+            line-height: 1.9;
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        /* BANNER INTERMEDIO DE IDENTIDAD DE MARCA */
+        .brand-divider {
+            background: linear-gradient(rgba(0,34,68,0.85), rgba(0,34,68,0.85)), url('banner.png') center/cover fixed;
+            padding: 80px 20px;
+            text-align: center;
+            color: var(--blanco);
+            border-top: 4px solid var(--verde);
+            border-bottom: 4px solid var(--verde);
+        }
+        .brand-divider img {
+            height: 80px;
+            margin-bottom: 15px;
+            object-fit: contain;
+        }
+        .brand-divider h4 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* --- SECCIÓN CONTACTO --- */
+        .contact {
+            background: linear-gradient(135deg, var(--azul-oscuro), #08111a);
+            color: var(--blanco);
+            position: relative;
+        }
+        .contact .section-title {
+            color: var(--blanco);
+        }
+        .form-wrapper {
+            max-width: 750px;
+            margin: 40px auto 0;
+            background: rgba(255, 255, 255, 0.04);
+            padding: 50px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .form-group-full {
+            grid-column: span 2;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 15px;
+            margin-top: 5px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.95);
+            color: #222;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: var(--verde);
+            box-shadow: 0 0 10px rgba(0, 168, 150, 0.5);
+        }
+        label {
+            display: block;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            margin-left: 5px;
+            color: rgba(255,255,255,0.9);
+        }
+        textarea {
+            resize: vertical;
+        }
+        .btn-submit {
+            background: linear-gradient(135deg, var(--verde), var(--verde-hover));
+            color: var(--blanco);
+            border: none;
+            padding: 18px 35px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 1.05rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 15px;
+            box-shadow: 0 5px 15px rgba(0, 168, 150, 0.3);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 22px rgba(0, 168, 150, 0.5);
+        }
+
+        /* --- BOTÓN WHATSAPP FLOTANTE --- */
+        .wpp {
+            position: fixed;
+            right: 30px;
+            bottom: 30px;
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            background: #25D366;
+            color: var(--blanco);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 32px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            z-index: 9999;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+        .wpp:hover {
+            transform: scale(1.1) rotate(8deg);
+            background-color: #20ba5a;
+        }
+
+        /* --- FOOTER CORPORATIVO --- */
+        footer {
+            background: #060d14;
+            color: #b5bdc6;
+            text-align: center;
+            padding: 45px 20px;
+            border-top: 3px solid var(--azul-oscuro);
+            font-size: 0.95rem;
+        }
+        .footer-logo {
+            height: 50px;
+            margin-bottom: 20px;
+            opacity: 0.85;
+            object-fit: contain;
+        }
+        .footer-credits {
+            margin-top: 10px;
+            font-size: 0.85rem;
+            color: #667380;
+        }
+
+        /* --- DISEÑO RESPONSIVO (MEDIA QUERIES) --- */
+        @media(max-width: 992px) {
+            .hero h1 {
+                font-size: 3.2rem;
+            }
+            .form-wrapper {
+                padding: 35px;
+            }
+        }
+        @media(max-width: 768px) {
+            .hero {
+                padding: 120px 20px;
+            }
+            .hero h1 {
+                font-size: 2.6rem;
+            }
+            .hero p {
+                font-size: 1.15rem;
+            }
+            .nav-links {
+                display: none; /* Simplificación móvil profesional estándar */
+            }
+            .section-title {
+                font-size: 2.1rem;
+            }
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            .form-group-full {
+                grid-column: span 1;
+            }
+            .references-box {
+                padding: 35px 20px;
+            }
+            .references-box h3 {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <div class="logo-container">
+                <img src="logo.png" class="logo" alt="DZ Soluciones Integrales Logo">
+            </div>
+            <div class="nav-links">
+                <a href="#inicio">Inicio</a>
+                <a href="#nosotros">Quiénes Somos</a>
+                <a href="#servicios">Trabajos y Servicios</a>
+                <a href="#experiencia">Experiencia</a>
+                <a href="#contacto">Contacto</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero" id="inicio">
+        <img src="logo.png" class="hero-logo-present" alt="DZ Soluciones Logo Presencia">
+        <h1>DZ SOLUCIONES INTEGRALES</h1>
+        <p>Mantenimiento edilicio corporativo, electricidad, termomecánica y soluciones tecnológicas.</p>
+        <a href="#contacto" class="btn-banner">Solicitar Presupuesto</a>
+    </section>
+
+    <section class="about" id="nosotros" data-aos="fade-up">
+        <div class="container">
+            <h2 class="section-title">Quiénes Somos</h2>
+            <div class="about-wrapper">
+                <p>En DZ Soluciones Integrales ofrecemos servicios profesionales de mantenimiento edilicio, instalaciones eléctricas, termomecánica, videovigilancia, impermeabilizaciones, pintura y reformas integrales para empresas, consorcios e industrias.</p>
+                <p>Nos destacamos por brindar soluciones rápidas, seguras y eficientes, trabajando con altos estándares de calidad y un enfoque orientado a resultados.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="services" id="servicios">
+        <div class="container">
+            <h2 class="section-title">Nuestros Servicios</h2>
+            <div class="grid-services">
+                
+                <div class="card-service" data-aos="fade-up">
+                    <img src="https://images.unsplash.com/photo-1557597774-9d273605dfa9?q=80&w=1200" alt="Cámaras y Software">
+                    <div class="card-service-body">
+                        <h3>Cámaras y Software</h3>
+                    </div>
+                </div>
+
+                <div class="card-service" data-aos="fade-up">
+                    <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=1200" alt="Electricidad">
+                    <div class="card-service-body">
+                        <h3>Electricidad</h3>
+                    </div>
+                </div>
+
+                <div class="card-service" data-aos="fade-up">
+                    <img src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?q=80&w=1200" alt="Termomecánica">
+                    <div class="card-service-body">
+                        <h3>Termomecánica</h3>
+                    </div>
+                </div>
+
+                <div class="card-service" data-aos="fade-up">
+                    <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1200" alt="Pintura, Durlock y Albañilería">
+                    <div class="card-service-body">
+                        <h3>Pintura, Durlock y Albañilería</h3>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <div class="brand-divider">
+        <img src="logo.png" alt="DZ Marca Footer Element">
+        <h4>Soluciones Técnicas Con Estándares Profesionales</h4>
+    </div>
+
+    <section class="experience" id="experiencia">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Experiencia y Trayectoria</h2>
+            
+            <p class="intro-text" data-aos="fade-up">
+                A lo largo de nuestra trayectoria hemos participado en proyectos de mantenimiento edilicio, instalaciones técnicas, sistemas tecnológicos, reformas y servicios especializados para organizaciones de distintos sectores. Nuestro compromiso con la calidad, la seguridad y la eficiencia nos permite adaptarnos a los requerimientos específicos de cada cliente.
+            </p>
+
+            <div class="grid-experience">
+                
+                <div class="card-experience" data-aos="fade-up">
+                    <i class="fas fa-hospital"></i>
+                    <h3>Instituciones de Salud</h3>
+                    <p>Participación en proyectos de mantenimiento edilicio, pintura profesional, impermeabilización, soporte tecnológico, monitoreo y mejoras de infraestructura en entornos que requieren altos estándares operativos.</p>
+                </div>
+
+                <div class="card-experience" data-aos="fade-up">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>Instituciones Educativas</h3>
+                    <p>Implementación de sistemas tecnológicos, videovigilancia, mantenimiento general y asistencia técnica para establecimientos educativos de gran circulación.</p>
+                </div>
+
+                <div class="card-experience" data-aos="fade-up">
+                    <i class="fas fa-building"></i>
+                    <h3>Empresas y Corporativos</h3>
+                    <p>Trabajos de electricidad, termomecánica, mantenimiento preventivo, pintura, albañilería y optimización de instalaciones para asegurar la continuidad operativa de cada espacio.</p>
+                </div>
+
+                <div class="card-experience" data-aos="fade-up">
+                    <i class="fas fa-bolt"></i>
+                    <h3>Servicios Técnicos Especializados</h3>
+                    <p>Instalaciones eléctricas, tableros, cableado estructurado, sistemas de monitoreo, climatización y mantenimiento correctivo para distintos tipos de infraestructura.</p>
+                </div>
+
+                <div class="card-experience" data-aos="fade-up">
+                    <i class="fas fa-paint-roller"></i>
+                    <h3>Obras y Reformas</h3>
+                    <p>Pintura profesional, impermeabilización, trabajos en Durlock, reformas integrales y puesta en valor de espacios interiores y exteriores.</p>
+                </div>
+
+                <div class="card-experience" data-aos="fade-up">
+                    <i class="fas fa-tools"></i>
+                    <h3>Mantenimiento Integral</h3>
+                    <p>Planes preventivos y correctivos orientados a maximizar la vida útil de las instalaciones y minimizar interrupciones operativas.</p>
+                </div>
+
+            </div>
+
+            <div class="references-box" data-aos="zoom-in">
+                <i class="fas fa-shield-alt"></i>
+                <h3>Referencias Disponibles</h3>
+                <p>Por cuestiones de confidencialidad y políticas de privacidad de nuestros clientes, no publicamos nombres de instituciones ni empresas en nuestro sitio web. Si desea conocer antecedentes específicos, referencias comerciales o trabajos realizados, puede solicitarlos durante el proceso de cotización o por contacto directo con nuestro equipo.</p>
+            </div>
+            
+        </div>
+    </section>
+
+    <section class="contact" id="contacto" data-aos="zoom-in">
+        <div class="container">
+            <h2 class="section-title">Solicitá tu Presupuesto</h2>
+            
+            <div class="form-wrapper">
+                <form action="https://formspree.io/f/maqzpkew" method="POST">
+                    
+                    <div class="form-grid">
+                        <div>
+                            <label for="nombre">Nombre completo *</label>
+                            <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+                        </div>
+                        <div>
+                            <label for="empresa_form">Empresa</label>
+                            <input type="text" id="empresa_form" name="empresa" placeholder="Nombre de la empresa">
+                        </div>
+                        <div>
+                            <label for="telefono">Teléfono de contacto *</label>
+                            <input type="tel" id="telefono" name="telefono" placeholder="Ej: +54 11 ..." required>
+                        </div>
+                        <div>
+                            <label for="email">Correo electrónico *</label>
+                            <input type="email" id="email" name="email" placeholder="nombre@correo.com" required>
+                        </div>
+                        <div class="form-group-full">
+                            <label for="servicio">Servicio requerido *</label>
+                            <select id="servicio" name="servicio">
+                                <option>Electricidad</option>
+                                <option>Termomecánica</option>
+                                <option>Cámaras</option>
+                                <option>Pintura y Albañilería</option>
+                                <option>Mantenimiento General</option>
+                            </select>
+                        </div>
+                        <div class="form-group-full">
+                            <label for="mensaje">Descripción del trabajo *</label>
+                            <textarea id="mensaje" name="mensaje" placeholder="Describa de forma detallada el requerimiento técnico o edilicio..." rows="5" required></textarea>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn-submit">Enviar Solicitud</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <a class="wpp" href="https://wa.me/5491167443518?text=Hola%20DZ%20Soluciones%20Integrales,%20quisiera%20solicitar%20un%20presupuesto." target="_blank" aria-label="Contacto por WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <footer>
+        <img src="logo.png" class="footer-logo" alt="DZ Soluciones Integrales Logo Footer"><br>
+        &copy; 2026 DZ Soluciones Integrales | Infraestructura, Tecnología y Mantenimiento Profesional
+        <div class="footer-logo" style="display:none;">Utiliza banner.png en backgrounds</div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+    </script>
+</body>
+</html>
